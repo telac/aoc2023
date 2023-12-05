@@ -14,12 +14,12 @@ DEST_MAPS = Dict{String, String}(
 
 REVERSE_MAPS = Dict(value => key for (key, value) in DEST_MAPS)
 
-function getLines()
+function get_lines()
     lines = readlines("input.txt")
     lines
 end
 
-function getMapping(s, maps, from, to) 
+function get_mapping(s, maps, from, to) 
 
     mappings = maps[from * "-" * to]
     next_dest = DEST_MAPS[to]
@@ -29,7 +29,7 @@ function getMapping(s, maps, from, to)
             if to == "location"
                 return value[1] + (s - key)
             else
-                return getMapping(value[1] + (s - key), maps, to, next_dest)
+                return get_mapping(value[1] + (s - key), maps, to, next_dest)
             end
             
         end
@@ -37,11 +37,11 @@ function getMapping(s, maps, from, to)
     if to == "location"
         return s
     else 
-        return getMapping(s, maps, to, next_dest)
+        return get_mapping(s, maps, to, next_dest)
     end
 end
 
-function getMappingForRange(ranges_to_check, maps, from, to) 
+function get_mapping_for_range(ranges_to_check, maps, from, to) 
     
     while (!isempty(ranges_to_check))
         next_dest = DEST_MAPS[to]
@@ -56,33 +56,33 @@ function getMappingForRange(ranges_to_check, maps, from, to)
             s0 = key
             e0 = key + value[2]
             # inside
-            middleStart = max(s1, s0) #+ (s1 - s0)
-            middleEnd = min(e0, e1) # (s1 - s0)
+            middle_start = max(s1, s0) #+ (s1 - s0)
+            middle_end = min(e0, e1) # (s1 - s0)
 
-            if middleEnd > middleStart
+            if middle_end > middle_start
                 matched = true
                 # right side
-                rightStart = max(middleEnd, s1) 
-                rightEnd = e1 
+                right_start = max(middle_end, s1) 
+                right_end = e1 
                 # left side
-                leftStart = s1 
-                leftEnd = min(e1, s0) 
+                left_start = s1 
+                left_end = min(e1, s0) 
                 # shift values
                 diff_mapping = value[1] - key
                 #@show range, from, to
                 #@show s1, e1, s0, e0, diff_mapping, key, value
-                middleStart += diff_mapping
-                middleEnd += diff_mapping
+                middle_start += diff_mapping
+                middle_end += diff_mapping
 
-                push!(new_seeds, (middleStart, middleEnd - middleStart))
-                #@show leftEnd, leftStart, e1, s0
-                if (leftEnd > leftStart)
-                    push!(ranges_to_check, (leftStart, leftEnd - leftStart + 1))
+                push!(new_seeds, (middle_start, middle_end - middle_start))
+                #@show left_end, left_start, e1, s0
+                if (left_end > left_start)
+                    push!(ranges_to_check, (left_start, left_end - left_start + 1))
                     #@show new_seeds
                 end
 
-                if rightEnd > rightStart
-                    push!(ranges_to_check, (rightStart, rightEnd - rightStart + 1))
+                if right_end > right_start
+                    push!(ranges_to_check, (right_start, right_end - right_start + 1))
                 end
 
             end
@@ -104,8 +104,8 @@ function getMappingForRange(ranges_to_check, maps, from, to)
     end 
 end
 
-function buildMaps()
-    lines = getLines()
+function build_maps()
+    lines = get_lines()
     maps = Dict{String, Dict{Int64, Tuple{Int64,Int64}}}()
     #reverseMaps = Dict{String, Dict{Int64, Tuple{Int64,Int64}}}()
     seeds = [parse(Int, ss) for ss in split(split(lines[1], ":")[2], " ") if ss != ""] 
@@ -142,32 +142,33 @@ function buildMaps()
     (maps, seeds)
 end
 
-function buildSeedTuples(seeds)
-    seedTuples = Array{Tuple{Int64,Int64},1}()
+function build_seed_tuples(seeds)
+    seed_tuples = Array{Tuple{Int64,Int64},1}()
     for i in (1:2:length(seeds))
-        push!(seedTuples, (seeds[i], seeds[i+1]))
+        push!(seed_tuples, (seeds[i], seeds[i+1]))
     end
-    return seedTuples
+    return seed_tuples
 end
 
-maps, seeds = buildMaps()
-seedTuples = buildSeedTuples(seeds)
+maps, seeds = build_maps()
+seed_tuples = build_seed_tuples(seeds)
 
 
 locations = []
 for seed in seeds
-    mapping = getMapping(seed, maps, "seed", "soil")
+    mapping = get_mapping(seed, maps, "seed", "soil")
     push!(locations, mapping)
 end
 
 @show findmin(locations)
 
 ranges = []
-for seedTuple in seedTuples
-    val = getMappingForRange([seedTuple], maps, "seed", "soil")
+for seed_tuple in seed_tuples
+    val = get_mapping_for_range([seed_tuple], maps, "seed", "soil")
     for range in val
         push!(ranges, range)    
     end
 end
+@show ranges
 range_starts =[x[1] for x in ranges] 
 @show findmin(range_starts)
