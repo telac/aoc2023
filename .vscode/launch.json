@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "org.aoc.day6.App",
+            "projectName": "aocd6"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
