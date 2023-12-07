@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
  */
 public class App 
 {
+
     public static String[] getInput() {
         try {
             var input = Files.readString(Paths.get(App.class.getClassLoader().getResource("input.txt").toURI()));
@@ -70,12 +71,16 @@ public class App
     
     public static void main( String[] args )
     {
+        for (int i = 0; i < 100000; i++) {
+            Dummy dummy = new Dummy();
+            dummy.m();
+        }
         var input = getInput();
         var time = getLongArray(input[0]);
         var records = getLongArray(input[1]);
         var part2time = combineLongArray(time);
         var part2records = combineLongArray(records);
-        System.out.format("part2time, records: %d, %d\n", part2time, part2records);
+        //System.out.format("part2time, records: %d, %d\n", part2time, part2records);
         List<Long> numWaysToWin = new ArrayList<>();
         for (int i = 0; i< time.length; ++i) {
             var waysToWin = waysToWin(time[i], records[i]);
@@ -85,10 +90,14 @@ public class App
         .stream()
         .reduce(1L, (acc, v) -> acc * v)
         .intValue();
-        System.out.format("part1: %d\n", part1);
-
+        //System.out.format("part1: %d\n", part1);
+        long startTime = System.currentTimeMillis();
         var p = waysToWin(part2time, part2records);
         var part2 = p[1] - p[0] + 1;
-        System.out.format("part2: %d\n", part2);
+        //System.out.format("part2: %d\n", part2);
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        System.out.println(elapsedTime);
+  
     }
 }
