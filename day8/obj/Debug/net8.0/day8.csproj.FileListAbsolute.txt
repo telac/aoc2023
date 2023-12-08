@@ -1,0 +1,15 @@
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/bin/Debug/net8.0/day8
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/bin/Debug/net8.0/day8.deps.json
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/bin/Debug/net8.0/day8.runtimeconfig.json
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/bin/Debug/net8.0/day8.dll
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/bin/Debug/net8.0/day8.pdb
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.GeneratedMSBuildEditorConfig.editorconfig
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.AssemblyInfoInputs.cache
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.AssemblyInfo.cs
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.csproj.CoreCompileInputs.cache
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.sourcelink.json
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.dll
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/refint/day8.dll
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.pdb
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/day8.genruntimeconfig.cache
+/Users/christianwesterlund/Documents/projects/aoc2023/day8/obj/Debug/net8.0/ref/day8.dll
