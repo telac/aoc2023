@@ -9,3 +9,4 @@ Each day with a different language. So far:
 * Day 5: Julia
 * Day 6: Java
 * Day 7: SQL
+* Day 8: C#
