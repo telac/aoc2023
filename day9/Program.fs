@@ -34,19 +34,15 @@ let diffLines =
 
 let part1 = 
     diffLines
-    |> Seq.map (fun x -> 
-     x |> List.map (fun y ->  Array.last y)
-    )
-    |> Seq.map (fun x -> List.sum x)
+    |> Seq.map (List.map Array.last)
+    |> Seq.map List.sum
     |> Seq.sum
 
 let part2 = 
     intLines 
     |> Seq.map Array.rev
     |> Seq.map recurseUntilDiffZero
-    |> Seq.map (fun x -> 
-         x |> List.map Array.last
-    )
+    |> Seq.map (List.map Array.last)
     |> Seq.map List.sum 
     |> Seq.sum
 
