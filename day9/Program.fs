@@ -41,16 +41,13 @@ let part1 =
     |> Seq.sum
 
 let part2 = 
-    intLines |> Seq.map (fun x ->
-        x |> Array.toList
-        |> List.rev 
-        |> List.toArray
-    )
+    intLines 
+    |> Seq.map Array.rev
     |> Seq.map recurseUntilDiffZero
     |> Seq.map (fun x -> 
          x |> List.map Array.last
     )
-    |> Seq.map (fun x -> List.sum x)
+    |> Seq.map List.sum 
     |> Seq.sum
 
 (*
