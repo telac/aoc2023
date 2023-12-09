@@ -1,5 +1,6 @@
 ﻿open System.IO
-let lines = seq { yield! System.IO.File.ReadLines "test_case.txt" }
+let lines = seq { yield! System.IO.File.ReadLines "input.txt" }
+let rev = System.Linq.Enumerable.Reverse
 
 let toIntArray (x: array<string>) = 
     x 
@@ -24,12 +25,12 @@ let rec recurseUntilDiffZero(diffs) =
 let intLines = 
     lines  
     |> Seq.map (fun x -> x.Split(" ")) 
-    |> Seq.map (fun x -> toIntArray x)
+    |> Seq.map toIntArray 
 
 
 let diffLines = 
     intLines 
-    |> Seq.map(fun x -> recurseUntilDiffZero x)
+    |> Seq.map recurseUntilDiffZero
 
 let part1 = 
     diffLines
@@ -40,12 +41,18 @@ let part1 =
     |> Seq.sum
 
 let part2 = 
-    diffLines
+    intLines |> Seq.map (fun x ->
+        x |> Array.toList
+        |> List.rev 
+        |> List.toArray
+    )
+    |> Seq.map recurseUntilDiffZero
     |> Seq.map (fun x -> 
-     x |> List.map (fun y ->  Array.head y)
+         x |> List.map Array.last
     )
     |> Seq.map (fun x -> List.sum x)
     |> Seq.sum
+
 (*
 diffLines |> Seq.iter (fun x -> 
     printf "\n"
@@ -56,5 +63,6 @@ diffLines |> Seq.iter (fun x ->
      )
 )
 *)
+
 printf "part1: %d\n" part1
-printf "part1: %d\n" part2
+printf "part2: %d\n" part2
