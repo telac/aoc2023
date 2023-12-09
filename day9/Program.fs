@@ -33,7 +33,8 @@ let diffLines =
     |> Seq.map recurseUntilDiffZero
 
 let part1 = 
-    diffLines
+    intLines
+    |> Seq.map recurseUntilDiffZero
     |> Seq.map (List.map Array.last)
     |> Seq.map List.sum
     |> Seq.sum
