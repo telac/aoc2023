@@ -1,5 +1,9 @@
 # google sheets commands
 
+The final sheet:
+
+https://docs.google.com/spreadsheets/d/1I8Lkl4IenA2qIGxAlzw_5aNwd0gbEySPqF3P0T1Wv9k/edit#gid=1210892648
+
 Format the data:
 
 ```
