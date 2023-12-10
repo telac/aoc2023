@@ -30,7 +30,6 @@ function getFirstMatchingNeighbor(x, y, neighbors, data) {
     for (let i in neighbors) {
       var n = neighbors[i];
       var inBounds = (dy + n[1] < 140 && dy + n[1] >= 0 && dx + n[0] < 140 && dx + n[0] >= 0);
-      // bounds check
       if (!inBounds) {
         continue;
       }
@@ -67,9 +66,6 @@ function getFirstMatchingNeighbor(x, y, neighbors, data) {
 }
 
 function outputData(x, y, data, output) {
-    // dx: 1 dy: 75 next 7 (uncomment for debug)
-    //x = 1;
-    //y = 75;
     var cell = output.getRange(y, x);
     cell.setValue(data[y][x]);
     var neighbors = [];
@@ -85,7 +81,7 @@ function outputData(x, y, data, output) {
     dy = y;
     while (!(next == "S")) {
       if (counter > 30000) {
-        //Logger.log("over 10000 writes, google dont like dat");
+        //there might be an infinite loop here
         break;
       }
       neighbors = [];
