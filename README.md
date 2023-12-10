@@ -10,3 +10,5 @@ Each day with a different language. So far:
 * Day 6: Java
 * Day 7: SQL
 * Day 8: C#
+* Day 9: F#
+* Day 10: Google sheets, Photoshop, openCV
