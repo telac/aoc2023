@@ -6,7 +6,9 @@ Format the data:
 =REGEXEXTRACT(TO_TEXT(Sheet1!A1); REPT("(.)"; LEN(Sheet1!A1)))
 ```
 
-Get the max from the grid:
+We can then run `sol.gs` on the resulting output of the previous command, which will output a path to a different sheet
+
+After, we can simply get the max from the grid:
 
 ```
 =MAX(2:1000)
@@ -22,7 +24,9 @@ Route visualized in sheets
 
 ![Route](route.png)
 
-For part 2, I took the output image of part 1 as PDF from google sheets, exported it to photoshop and created B/W version of it, with the middle (not inside the loop) and outside (not inside) with red, and counted the area of white pixels with openCV (there happened to be a post in slack overflow that had exactly what I needed, which can be seen in `colors.py`).
+# part 2
+
+For part 2, I took the output image of part 1 as PDF from google sheets, exported it to photoshop and created B/W version of it and finally colored the middle (not inside the loop) and outside (also not inside the loop) with red, and counted the area of white pixels with openCV (there happened to be a post in slack overflow that had exactly what I needed, which can be seen in `colors.py`).
 
 ![Route](middle_filled.png)
 
