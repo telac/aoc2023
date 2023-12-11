@@ -39,7 +39,7 @@ The white blocks were not equally sized due to resolution/import issues (i'm not
 I then looped through 24 - 26 pixels, and also taking the midpoints (24.5, 25, 25.5).. and tried to submit the solutions. Luckily one of the numbers matched almost exactly to the answer (325.28979591836736). I tried both 326 and 325, and 325 worked.
 
 
-## and of course that was wrong.
+## and of course that was wrong. But accidentally got the right answer?
 
 The second attempt was a bit more reasonable: I multiplied all the sides by 3 on the apps script, and made the cells squares (see output_3x onm the sheet).
 
@@ -64,7 +64,10 @@ The number of pixels in middle is about 78781 and on the outside about 21890
 Trying slightly different values for the most inaccurate part (are measurement in the middle, having both the potential inaccuracy of stroke not being square shaped on edges and the line measurement being inaccurate
 
 (78781 - (2100 * 2)) / (20 * 20) + 21890 / (156) = 326.7730128205128
+
 (78781 - (2200 * 2)) / (20 * 20) + 21890 / (156) = 326.2730128205128
+
 (78781 - (2300 * 2)) / (20 * 20) + 21890 / (156) = 325.7730128205128
+
 (78781 - (2400 * 2)) / (20 * 20) + 21890 / (156) = 325.2730128205128
 
