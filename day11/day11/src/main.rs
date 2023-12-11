@@ -28,41 +28,6 @@ fn get_expand_indexes(puzzle_input: Vec<String>) -> (Vec<usize>, Vec<usize>) {
     return (cols_to_expand, rows_to_expand);
 }
 
-fn expand(puzzle_input: Vec<String>) -> Vec<String> {
-    let mut res =  Vec::new();
-    for row in puzzle_input {
-        if !row.contains("#") {
-            res.push(row.clone());
-        }
-        res.push(row.clone());
-    }
-    let mut indexes_to_expand = Vec::new();
-    for (i, _) in res[0].chars().enumerate() {
-        let is_empty = res
-        .iter()
-        .fold(
-            true, |acc, v| acc && v.chars().nth(i).unwrap() == '.'
-        );
-        if is_empty {
-            indexes_to_expand.push(i);
-        }
-    }
-    for (cnt, idx) in indexes_to_expand.iter().enumerate() {
-        let new_row = res
-        .iter()
-        .map(
-            | row | {
-                let mut s = row.clone();
-                s.insert(idx + cnt, '.'); // :thisisfinefire:
-                return s;
-            }
-        ).collect::<Vec<String>>();
-        //print_vec(&new_row);
-        res = new_row;
-    }
-    return res;
-}
-
 fn get_pairs(map: &Vec<String>) -> Vec<(usize, usize)> {
     let mut res =  Vec::new();
     for (idx_y, row) in map.iter().enumerate() {
@@ -120,8 +85,6 @@ fn main() {
         result.push(line.to_string());
     }
     print_string_vec(&result);
-    let expanded = expand(result.clone());
-    print_string_vec(&expanded);
     let pairs = get_pairs(&result);
     let (x,y) = get_expand_indexes(result.clone());
     let part1 = get_shortest_lengths(&pairs, &x, &y, 1u64);
